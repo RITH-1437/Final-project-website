@@ -1,0 +1,17 @@
+/* Theme Variables */
+:root {
+  --theme-primary: #667eea;
+  --theme-secondary: #764ba2;
+  --theme-accent: #f093fb;
+  --theme-background: #f8f9fa;
+  --theme-text: #2c3e50;
+  --theme-card-bg: #ffffff;
+  --theme-card-border: #e5e7eb;
+  --theme-hover-bg: #f3f4f6;
+  --theme-shadow: rgba(102, 126, 234, 0.4);
+  --theme-input-bg: #ffffff;
+  --theme-input-border: #d1d5db;
+  --theme-nav-text: #ffffff;
+}
+
+/* Floating Theme Selector - Styles moved to individual page CSS files */

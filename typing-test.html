@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <title>Typing Test - TypingMaster</title>    <link rel="stylesheet" href="typing-test.css">
+    <script src="theme-manager.js"></script>
+    <script src="menu.js"></script>
+    <script src="auth.js"></script>
+</head>
+<body>    <header>        <nav class="navbar">
+            <div class="nav-brand">
+                <h1>TypingMaster</h1>
+            </div>            <!-- Mobile Menu Button -->
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <span class="menu-icon">☰</span>
+            </button>            <ul class="nav-links" id="navLinks">
+                <!-- Navigation will be populated by auth.js -->
+            </ul>
+        </nav>
+    </header>    <main>        <div class="typing-container">
+            <h2>Typing Speed Test</h2>
+            
+            <div class="difficulty-indicator" id="difficultyIndicator">
+                <span class="difficulty-label">Current Level:</span>
+                <span class="difficulty-badge beginner" id="difficultyBadge">Beginner</span>
+            </div>
+              <div class="test-settings">
+                <div class="setting-group">
+                    <label for="difficulty-level">Difficulty Level:</label>
+                    <select id="difficulty-level">
+                        <option value="beginner">Beginner</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="advanced">Advanced</option>
+                        <option value="expert">Expert</option>
+                    </select>
+                </div>
+                <div class="setting-group">
+                    <label for="test-duration">Test Duration:</label>
+                    <select id="test-duration">
+                        <option value="60">1 Minute</option>
+                        <option value="180">3 Minutes</option>
+                        <option value="300">5 Minutes</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="test-stats">
+                <div class="stat-item">
+                    <span class="stat-value" id="wpm">0</span>
+                    <span class="stat-label">WPM</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value" id="accuracy">100</span>
+                    <span class="stat-label">% Accuracy</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value" id="time">60</span>
+                    <span class="stat-label">Seconds</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value" id="errors">0</span>
+                    <span class="stat-label">Errors</span>
+                </div>
+            </div>
+
+            <div class="test-text" id="test-text">
+                The quick brown fox jumps over the lazy dog. This pangram contains every letter of the alphabet at least once. It has been used for testing typewriters and computer keyboards for decades. Now it's your turn to type this text as quickly and accurately as possible. Focus on maintaining good posture and using proper finger placement. Remember that accuracy is just as important as speed when it comes to effective typing.
+            </div>
+
+            <textarea 
+                class="typing-input" 
+                id="typing-input"
+                placeholder="Click here and start typing the text above..."
+                disabled
+            ></textarea>
+
+            <div class="test-controls">
+                <button class="btn btn-primary" id="start-btn">Start Test</button>
+                <button class="btn btn-secondary" id="reset-btn">Reset</button>
+                <button class="btn btn-secondary" id="new-text-btn">New Text</button>
+            </div>
+
+            <div id="results" style="display: none; margin-top: 2rem; padding: 2rem; background: #f8f9fa; border-radius: 15px;">
+                <h3 style="text-align: center; color: #2c3e50; margin-bottom: 1rem;">Test Results</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; text-align: center;">
+                    <div>
+                        <div style="font-size: 2rem; font-weight: bold; color: #667eea;" id="final-wpm">0</div>
+                        <div style="color: #666;">Words Per Minute</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 2rem; font-weight: bold; color: #667eea;" id="final-accuracy">100</div>
+                        <div style="color: #666;">Accuracy %</div>
+                    </div>
+                    <div>
+                        <div style="font-size: 2rem; font-weight: bold; color: #667eea;" id="final-errors">0</div>
+                        <div style="color: #666;">Total Errors</div>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 1.5rem;">
+                    <a href="results.html" class="btn btn-primary">View All Results</a>
+                </div>
+            </div>
+
+            <div class="difficulty-info" id="difficultyInfo">
+                <div class="info-text" id="difficultyDescription">
+                    Simple words and short sentences perfect for beginners learning to type.
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Floating Theme Selector -->
+    <div class="theme-selector-container">
+        <button class="theme-toggle-btn" id="themeToggleBtn">
+            <div class="theme-color-dots">
+                <div class="color-dot default-dot"></div>
+                <div class="color-dot ocean-dot"></div>
+                <div class="color-dot sunset-dot"></div>
+                <div class="color-dot forest-dot"></div>
+                <div class="color-dot dark-dot"></div>
+            </div>
+        </button>
+        <div class="theme-dropdown" id="themeDropdown">
+            <div class="theme-option active" data-theme="default">Default Purple</div>
+            <div class="theme-option" data-theme="ocean">Ocean Blue</div>
+            <div class="theme-option" data-theme="sunset">Sunset Orange</div>
+            <div class="theme-option" data-theme="forest">Forest Green</div>
+            <div class="theme-option" data-theme="dark">Dark Mode</div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 TypingMaster. All rights reserved.</p>
+        </div>
+    </footer>    <script>        let testStarted = false;
+        let testEnded = false;
+        let startTime;
+        let testDuration = 60;
+        let timer;
+        let currentTime = 60;
+        let currentDifficulty = 'beginner';
+        
+        const testTexts = {
+            beginner: [
+                "The cat sat on the mat. Dogs like to play with balls. Birds can fly in the sky. Fish swim in the water. The sun is bright and warm today.",
+                "I like to eat good food. My mom makes the best cakes. We go to the park every day. The flowers are very pretty. Children love to play games.",
+                "Books are fun to read. I have a red car. The tree is tall and green. We can see the blue sky. My friend has a cute pet."
+            ],
+            intermediate: [
+                "The quick brown fox jumps over the lazy dog. This pangram contains every letter of the alphabet at least once. It has been used for testing typewriters and computer keyboards for decades.",
+                "Technology has revolutionized the way we communicate and work. From smartphones to artificial intelligence, innovation continues to shape our daily lives. The ability to type efficiently is more important than ever.",
+                "Learning to type without looking at the keyboard is a valuable skill that takes practice and patience. Start by familiarizing yourself with the home row keys and proper finger placement."
+            ],
+            advanced: [
+                "Synchronization of distributed systems requires careful consideration of network latency, fault tolerance, and consistency models. Byzantine fault tolerance algorithms ensure system reliability even when some nodes behave maliciously or fail unexpectedly.",
+                "Quantum computing leverages quantum-mechanical phenomena such as superposition and entanglement to perform operations on data. Unlike classical bits, quantum bits (qubits) can exist in multiple states simultaneously, enabling exponential computational advantages.",
+                "Cryptocurrency blockchain technology utilizes cryptographic hash functions and consensus mechanisms to maintain a decentralized, immutable ledger of transactions without requiring a central authority or intermediary."
+            ],
+            expert: [
+                "Pseudopolynomial-time algorithms exhibit complexity dependent on the numerical magnitude of input values rather than their logarithmic representation. This phenomenon particularly manifests in dynamic programming solutions for the knapsack problem: while O(nW) appears polynomial, W's exponential growth relative to input size renders it computationally intractable for large-scale applications.",
+                "Metamorphic testing addresses the oracle problem by exploiting invariant relationships between inputs and outputs. Consider f(2x) = 2f(x) for linear functions; violations indicate implementation defects. This technique proves invaluable when determining correctness becomes computationally prohibitive or theoretically impossible.",
+                "Non-deterministic finite automata recognition algorithms employ epsilon-closure operations and subset construction methods. The powerset construction transforms NFAs into equivalent DFAs through state aggregation, potentially yielding exponential state explosion but guaranteeing deterministic execution paths."
+            ]
+        };
+        
+        let currentTextIndex = 0;        const startBtn = document.getElementById('start-btn');
+        const resetBtn = document.getElementById('reset-btn');
+        const newTextBtn = document.getElementById('new-text-btn');
+        const typingInput = document.getElementById('typing-input');
+        const testTextElement = document.getElementById('test-text');
+        const resultsDiv = document.getElementById('results');
+        const durationSelect = document.getElementById('test-duration');
+        const difficultySelect = document.getElementById('difficulty-level');
+
+        startBtn.addEventListener('click', startTest);
+        resetBtn.addEventListener('click', resetTest);
+        newTextBtn.addEventListener('click', newText);
+        typingInput.addEventListener('input', updateStats);
+        durationSelect.addEventListener('change', updateDuration);
+        difficultySelect.addEventListener('change', updateDifficulty);        // Initialize with beginner text
+        updateTextDisplay();
+        updateDifficultyBadge();function updateDifficulty() {
+            if (!testStarted) {
+                currentDifficulty = difficultySelect.value;
+                currentTextIndex = 0;
+                updateTextDisplay();
+                updateDifficultyBadge();
+                resetTest();
+            }
+        }        function updateDifficultyBadge() {
+            const badge = document.getElementById('difficultyBadge');
+            const description = document.getElementById('difficultyDescription');
+            
+            badge.className = `difficulty-badge ${currentDifficulty}`;
+            badge.textContent = currentDifficulty.charAt(0).toUpperCase() + currentDifficulty.slice(1);
+            
+            const descriptions = {
+                beginner: "Simple words and short sentences perfect for beginners learning to type.",
+                intermediate: "Standard paragraphs with common words and punctuation for developing typists.",
+                advanced: "Complex technical content with challenging vocabulary and specialized terms.",
+                expert: "Highly technical content with complex terminology and advanced concepts."
+            };
+            
+            description.textContent = descriptions[currentDifficulty];
+        }
+
+        function updateTextDisplay() {
+            const texts = testTexts[currentDifficulty];
+            testTextElement.textContent = texts[currentTextIndex];
+        }
+
+        function updateDuration() {
+            if (!testStarted) {
+                testDuration = parseInt(durationSelect.value);
+                currentTime = testDuration;
+                document.getElementById('time').textContent = currentTime;
+            }
+        }        function startTest() {
+            testStarted = true;
+            testEnded = false;
+            testDuration = parseInt(durationSelect.value);
+            startTime = new Date().getTime();
+            currentTime = testDuration;
+            
+            typingInput.disabled = false;
+            typingInput.focus();
+            startBtn.disabled = true;
+            startBtn.textContent = 'Test Running...';
+            durationSelect.disabled = true;
+            difficultySelect.disabled = true;
+            resultsDiv.style.display = 'none';
+            
+            timer = setInterval(() => {
+                currentTime--;
+                document.getElementById('time').textContent = currentTime;
+                
+                if (currentTime <= 0) {
+                    endTest();
+                }
+            }, 1000);
+        }        function endTest() {
+            testEnded = true;
+            testStarted = false;
+            clearInterval(timer);
+            
+            typingInput.disabled = true;
+            startBtn.disabled = false;
+            startBtn.textContent = 'Start Test';
+            durationSelect.disabled = false;
+            difficultySelect.disabled = false;
+            
+            showResults();
+        }        function resetTest() {
+            testStarted = false;
+            testEnded = false;
+            clearInterval(timer);
+            testDuration = parseInt(durationSelect.value);
+            currentTime = testDuration;
+            
+            typingInput.value = '';
+            typingInput.disabled = true;
+            startBtn.disabled = false;
+            startBtn.textContent = 'Start Test';
+            durationSelect.disabled = false;
+            difficultySelect.disabled = false;
+            resultsDiv.style.display = 'none';
+            
+            document.getElementById('wpm').textContent = '0';
+            document.getElementById('accuracy').textContent = '100';
+            document.getElementById('time').textContent = testDuration;
+            document.getElementById('errors').textContent = '0';
+        }
+
+        function newText() {
+            const texts = testTexts[currentDifficulty];
+            currentTextIndex = (currentTextIndex + 1) % texts.length;
+            updateTextDisplay();
+            resetTest();
+        }
+
+        function updateStats() {
+            if (!testStarted || testEnded) return;
+            
+            const typedText = typingInput.value;
+            const originalText = testTexts[currentDifficulty][currentTextIndex];
+            
+            // Calculate WPM
+            const timeElapsed = (new Date().getTime() - startTime) / 1000 / 60;
+            const wordsTyped = typedText.split(' ').length;
+            const wpm = Math.round(wordsTyped / timeElapsed) || 0;
+            
+            // Calculate accuracy and errors
+            let errors = 0;
+            for (let i = 0; i < typedText.length; i++) {
+                if (typedText[i] !== originalText[i]) {
+                    errors++;
+                }
+            }
+            
+            const accuracy = typedText.length > 0 ? Math.round(((typedText.length - errors) / typedText.length) * 100) : 100;
+            
+            document.getElementById('wpm').textContent = wpm;
+            document.getElementById('accuracy').textContent = accuracy;
+            document.getElementById('errors').textContent = errors;
+            
+            // End test if text is completed
+            if (typedText.length >= originalText.length) {
+                endTest();
+            }
+        }
+
+        function showResults() {
+            const finalWpm = document.getElementById('wpm').textContent;
+            const finalAccuracy = document.getElementById('accuracy').textContent;
+            const finalErrors = document.getElementById('errors').textContent;
+            
+            document.getElementById('final-wpm').textContent = finalWpm;
+            document.getElementById('final-accuracy').textContent = finalAccuracy;
+            document.getElementById('final-errors').textContent = finalErrors;            resultsDiv.style.display = 'block';
+            resultsDiv.scrollIntoView({ behavior: 'smooth' });        }
+    </script>
+    
+    <script>
+        // Check authentication and redirect if not logged in
+        document.addEventListener('DOMContentLoaded', function() {
+            // Initialize auth system which will update navigation
+            window.auth = new Auth();
+            
+            // Check if user is authenticated
+            if (!auth.isAuthenticated) {
+                alert('You need to login or register to access the typing test.');
+                window.location.href = 'login.html';
+                return;
+            }
+        });
+    </script>
+</body>
+</html>

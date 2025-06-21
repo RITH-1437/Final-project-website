@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - TypingMaster</title>
+    <link rel="stylesheet" href="login.css" />
+    <script src="auth.js"></script>
+    <script src="theme-manager.js"></script>
+    <script src="menu.js"></script>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <div class="nav-brand">
+          <h1>TypingMaster</h1>
+        </div>
+        <!-- Mobile Menu Button -->
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+          <span class="menu-icon">☰</span>
+        </button>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="typing-test.html">Typing Test</a></li>
+          <li><a href="login.html" class="active">Login</a></li>
+          <li><a href="register.html">Register</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <div class="form-container">
+        <h2>Welcome Back</h2>
+        <form onsubmit="auth.handleLogin(event)">
+          <div class="form-group">
+            <label for="username">Username or Email</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              placeholder="Enter your username or email"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Enter your password"
+              required
+            />
+          </div>
+          <div
+            class="form-group"
+            style="display: flex; align-items: center; gap: 0.5rem"
+          >
+            <input
+              type="checkbox"
+              id="remember"
+              name="remember"
+              style="width: auto"
+            />
+            <label for="remember" style="margin-bottom: 0">Remember me</label>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%">
+            Login
+          </button>
+        </form>
+        <div class="form-links">
+          <p><a href="reset-password.html">Forgot your password?</a></p>
+          <p>
+            Don't have an account? <a href="register.html">Register here</a>
+          </p>
+        </div>
+      </div>
+    </main>
+
+    <!-- Floating Theme Selector -->
+    <div class="theme-selector-container">
+      <button class="theme-toggle-btn" id="themeToggleBtn">
+        <div class="theme-color-dots">
+          <div class="color-dot default-dot"></div>
+          <div class="color-dot ocean-dot"></div>
+          <div class="color-dot sunset-dot"></div>
+          <div class="color-dot forest-dot"></div>
+          <div class="color-dot dark-dot"></div>
+        </div>
+      </button>
+      <div class="theme-dropdown" id="themeDropdown">
+        <div class="theme-option active" data-theme="default">
+          Default Purple
+        </div>
+        <div class="theme-option" data-theme="ocean">Ocean Blue</div>
+        <div class="theme-option" data-theme="sunset">Sunset Orange</div>
+        <div class="theme-option" data-theme="forest">Forest Green</div>
+        <div class="theme-option" data-theme="dark">Dark Mode</div>
+      </div>
+    </div>
+    <footer>
+      <div class="container">
+        <p>&copy; 2025 TypingMaster. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      // Initialize authentication system
+      document.addEventListener("DOMContentLoaded", function () {
+        window.auth = new Auth();
+      });
+    </script>
+  </body>
+</html>

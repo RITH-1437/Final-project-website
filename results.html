@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">    <title>Test Results - TypingMaster</title>    <link rel="stylesheet" href="results.css">
+    <script src="auth.js"></script>
+    <script src="theme-manager.js"></script>
+    <script src="menu.js"></script>
+</head>
+<body>    <header>        <nav class="navbar">
+            <div class="nav-brand">
+                <h1>TypingMaster</h1>
+            </div>            <!-- Mobile Menu Button -->
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <span class="menu-icon">☰</span>
+            </button>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="results.html" class="active">View Results</a></li>
+                <li><a href="#" onclick="auth.logout()" class="logout-btn">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="results-container">
+            <h2>Your Typing Test Results</h2>
+            
+            <div class="results-filter">
+                <label for="filter-period">Filter by:</label>
+                <select id="filter-period">
+                    <option value="all">All Time</option>
+                    <option value="week">Last Week</option>
+                    <option value="month">Last Month</option>
+                    <option value="year">Last Year</option>
+                </select>
+                
+                <label for="filter-test">Test Type:</label>
+                <select id="filter-test">
+                    <option value="all">All Tests</option>
+                    <option value="1min">1 Minute</option>
+                    <option value="3min">3 Minutes</option>
+                    <option value="5min">5 Minutes</option>
+                </select>
+            </div>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; text-align: center;">
+                <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 15px;">
+                    <div style="font-size: 2rem; font-weight: bold; color: #667eea;">73</div>
+                    <div style="color: #666;">Average WPM</div>
+                </div>
+                <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 15px;">
+                    <div style="font-size: 2rem; font-weight: bold; color: #27ae60;">94%</div>
+                    <div style="color: #666;">Average Accuracy</div>
+                </div>
+                <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 15px;">
+                    <div style="font-size: 2rem; font-weight: bold; color: #667eea;">42</div>
+                    <div style="color: #666;">Tests Completed</div>
+                </div>
+                <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 15px;">
+                    <div style="font-size: 2rem; font-weight: bold; color: #f39c12;">12</div>
+                    <div style="color: #666;">Days Streak</div>
+                </div>
+            </div>
+
+            <table class="results-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Test Type</th>
+                        <th>WPM</th>
+                        <th>Accuracy</th>
+                        <th>Errors</th>
+                        <th>Duration</th>
+                        <th>Performance</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2025-06-04</td>
+                        <td>1 Minute</td>
+                        <td>85</td>
+                        <td><span class="accuracy-good">97%</span></td>
+                        <td>3</td>
+                        <td>60s</td>
+                        <td><span style="color: #27ae60;">Excellent</span></td>
+                    </tr>
+                    <tr>
+                        <td>2025-06-04</td>
+                        <td>3 Minutes</td>
+                        <td>78</td>
+                        <td><span class="accuracy-good">95%</span></td>
+                        <td>8</td>
+                        <td>180s</td>
+                        <td><span style="color: #27ae60;">Very Good</span></td>
+                    </tr>
+                    <tr>
+                        <td>2025-06-03</td>
+                        <td>1 Minute</td>
+                        <td>72</td>
+                        <td><span class="accuracy-average">88%</span></td>
+                        <td>12</td>
+                        <td>60s</td>
+                        <td><span style="color: #f39c12;">Good</span></td>
+                    </tr>
+                    <tr>
+                        <td>2025-06-03</td>
+                        <td>5 Minutes</td>
+                        <td>69</td>
+                        <td><span class="accuracy-good">92%</span></td>
+                        <td>15</td>
+                        <td>300s</td>
+                        <td><span style="color: #27ae60;">Good</span></td>
+                    </tr>
+                    <tr>
+                        <td>2025-06-02</td>
+                        <td>1 Minute</td>
+                        <td>81</td>
+                        <td><span class="accuracy-good">96%</span></td>
+                        <td>4</td>
+                        <td>60s</td>
+                        <td><span style="color: #27ae60;">Excellent</span></td>
+                    </tr>
+                    <tr>
+                        <td>2025-06-02</td>
+                        <td>3 Minutes</td>
+                        <td>75</td>
+                        <td><span class="accuracy-average">89%</span></td>
+                        <td>18</td>
+                        <td>180s</td>
+                        <td><span style="color: #f39c12;">Good</span></td>
+                    </tr>
+                    <tr>
+                        <td>2025-06-01</td>
+                        <td>1 Minute</td>
+                        <td>67</td>
+                        <td><span class="accuracy-poor">82%</span></td>
+                        <td>22</td>
+                        <td>60s</td>
+                        <td><span style="color: #e74c3c;">Needs Improvement</span></td>
+                    </tr>
+                    <tr>
+                        <td>2025-06-01</td>
+                        <td>1 Minute</td>
+                        <td>63</td>
+                        <td><span class="accuracy-average">87%</span></td>
+                        <td>16</td>
+                        <td>60s</td>
+                        <td><span style="color: #f39c12;">Average</span></td>
+                    </tr>
+                    <tr>
+                        <td>2025-05-31</td>
+                        <td>3 Minutes</td>
+                        <td>71</td>
+                        <td><span class="accuracy-good">91%</span></td>
+                        <td>14</td>
+                        <td>180s</td>
+                        <td><span style="color: #27ae60;">Good</span></td>
+                    </tr>
+                    <tr>
+                        <td>2025-05-31</td>
+                        <td>1 Minute</td>
+                        <td>76</td>
+                        <td><span class="accuracy-good">94%</span></td>
+                        <td>6</td>
+                        <td>60s</td>
+                        <td><span style="color: #27ae60;">Very Good</span></td>
+                    </tr>
+                    <tr>
+                        <td>2025-05-30</td>
+                        <td>5 Minutes</td>
+                        <td>68</td>
+                        <td><span class="accuracy-average">88%</span></td>
+                        <td>24</td>
+                        <td>300s</td>
+                        <td><span style="color: #f39c12;">Good</span></td>
+                    </tr>
+                    <tr>
+                        <td>2025-05-30</td>
+                        <td>1 Minute</td>
+                        <td>79</td>
+                        <td><span class="accuracy-good">93%</span></td>
+                        <td>7</td>
+                        <td>60s</td>
+                        <td><span style="color: #27ae60;">Very Good</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Mobile Results Cards - Shown on mobile devices -->
+            <div class="mobile-results-container">
+                <div class="result-card">
+                    <div class="result-card-header">
+                        <div class="result-date">2025-06-04</div>
+                        <div class="result-test-type">1 Minute</div>
+                    </div>
+                    <div class="result-stats">
+                        <div class="result-stat">
+                            <div class="result-stat-value" style="color: #667eea;">85</div>
+                            <div class="result-stat-label">WPM</div>
+                        </div>
+                        <div class="result-stat">
+                            <div class="result-stat-value accuracy-good">97%</div>
+                            <div class="result-stat-label">Accuracy</div>
+                        </div>
+                        <div class="result-stat">
+                            <div class="result-stat-value">3</div>
+                            <div class="result-stat-label">Errors</div>
+                        </div>
+                        <div class="result-stat">
+                            <div class="result-stat-value">60s</div>
+                            <div class="result-stat-label">Duration</div>
+                        </div>
+                    </div>
+                    <div class="result-performance performance-excellent">Excellent</div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-card-header">
+                        <div class="result-date">2025-06-04</div>
+                        <div class="result-test-type">3 Minutes</div>
+                    </div>
+                    <div class="result-stats">
+                        <div class="result-stat">
+                            <div class="result-stat-value" style="color: #667eea;">78</div>
+                            <div class="result-stat-label">WPM</div>
+                        </div>
+                        <div class="result-stat">
+                            <div class="result-stat-value accuracy-good">95%</div>
+                            <div class="result-stat-label">Accuracy</div>
+                        </div>
+                        <div class="result-stat">
+                            <div class="result-stat-value">8</div>
+                            <div class="result-stat-label">Errors</div>
+                        </div>
+                        <div class="result-stat">
+                            <div class="result-stat-value">180s</div>
+                            <div class="result-stat-label">Duration</div>
+                        </div>
+                    </div>
+                    <div class="result-performance performance-excellent">Very Good</div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-card-header">
+                        <div class="result-date">2025-06-03</div>
+                        <div class="result-test-type">1 Minute</div>
+                    </div>
+                    <div class="result-stats">
+                        <div class="result-stat">
+                            <div class="result-stat-value" style="color: #667eea;">72</div>
+                            <div class="result-stat-label">WPM</div>
+                        </div>
+                        <div class="result-stat">
+                            <div class="result-stat-value accuracy-average">88%</div>
+                            <div class="result-stat-label">Accuracy</div>
+                        </div>
+                        <div class="result-stat">
+                            <div class="result-stat-value">12</div>
+                            <div class="result-stat-label">Errors</div>
+                        </div>
+                        <div class="result-stat">
+                            <div class="result-stat-value">60s</div>
+                            <div class="result-stat-label">Duration</div>
+                        </div>
+                    </div>
+                    <div class="result-performance performance-good">Good</div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-card-header">
+                        <div class="result-date">2025-06-03</div>
+                        <div class="result-test-type">5 Minutes</div>
+                    </div>
+                    <div class="result-stats">
+                        <div class="result-stat">
+                            <div class="result-stat-value" style="color: #667eea;">69</div>
+                            <div class="result-stat-label">WPM</div>
+                        </div>
+                        <div class="result-stat">
+                            <div class="result-stat-value accuracy-good">92%</div>
+                            <div class="result-stat-label">Accuracy</div>
+                        </div>
+                        <div class="result-stat">
+                            <div class="result-stat-value">15</div>
+                            <div class="result-stat-label">Errors</div>
+                        </div>
+                        <div class="result-stat">
+                            <div class="result-stat-value">300s</div>
+                            <div class="result-stat-label">Duration</div>
+                        </div>
+                    </div>
+                    <div class="result-performance performance-good">Good</div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-card-header">
+                        <div class="result-date">2025-06-02</div>
+                        <div class="result-test-type">1 Minute</div>
+                    </div>
+                    <div class="result-stats">
+                        <div class="result-stat">
+                            <div class="result-stat-value" style="color: #667eea;">81</div>
+                            <div class="result-stat-label">WPM</div>
+                        </div>
+                        <div class="result-stat">
+                            <div class="result-stat-value accuracy-good">96%</div>
+                            <div class="result-stat-label">Accuracy</div>
+                        </div>
+                        <div class="result-stat">
+                            <div class="result-stat-value">4</div>
+                            <div class="result-stat-label">Errors</div>
+                        </div>
+                        <div class="result-stat">
+                            <div class="result-stat-value">60s</div>
+                            <div class="result-stat-label">Duration</div>
+                        </div>
+                    </div>
+                    <div class="result-performance performance-excellent">Excellent</div>
+                </div>
+
+                <div class="result-card">
+                    <div class="result-card-header">
+                        <div class="result-date">2025-06-02</div>
+                        <div class="result-test-type">3 Minutes</div>
+                    </div>
+                    <div class="result-stats">
+                        <div class="result-stat">
+                            <div class="result-stat-value" style="color: #667eea;">75</div>
+                            <div class="result-stat-label">WPM</div>
+                        </div>
+                        <div class="result-stat">
+                            <div class="result-stat-value accuracy-average">89%</div>
+                            <div class="result-stat-label">Accuracy</div>
+                        </div>
+                        <div class="result-stat">
+                            <div class="result-stat-value">18</div>
+                            <div class="result-stat-label">Errors</div>
+                        </div>
+                        <div class="result-stat">
+                            <div class="result-stat-value">180s</div>
+                            <div class="result-stat-label">Duration</div>
+                        </div>
+                    </div>
+                    <div class="result-performance performance-good">Good</div>
+                </div>
+            </div>            <div class="action-buttons">
+                <a href="typing-test.html" class="btn btn-primary">Take Another Test</a>
+                <button class="btn btn-secondary" onclick="exportResults()">Export Results</button>
+            </div>
+
+            <div style="margin-top: 3rem; padding: 2rem; background: #f8f9fa; border-radius: 15px;">
+                <h3 style="color: #2c3e50; margin-bottom: 1rem;">Performance Analysis</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+                    <div>
+                        <h4 style="color: #667eea; margin-bottom: 0.5rem;">Strengths</h4>
+                        <ul style="color: #666; line-height: 1.6;">
+                            <li>Consistent typing speed improvement</li>
+                            <li>Good accuracy in longer tests</li>
+                            <li>Regular practice schedule</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 style="color: #f39c12; margin-bottom: 0.5rem;">Areas to Improve</h4>
+                        <ul style="color: #666; line-height: 1.6;">
+                            <li>Focus on accuracy in short bursts</li>
+                            <li>Work on maintaining speed consistency</li>
+                            <li>Practice with punctuation marks</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Floating Theme Selector -->
+    <div class="theme-selector-container">
+        <button class="theme-toggle-btn" id="themeToggleBtn">
+            <div class="theme-color-dots">
+                <div class="color-dot default-dot"></div>
+                <div class="color-dot ocean-dot"></div>
+                <div class="color-dot sunset-dot"></div>
+                <div class="color-dot forest-dot"></div>
+                <div class="color-dot dark-dot"></div>
+            </div>
+        </button>
+        <div class="theme-dropdown" id="themeDropdown">
+            <div class="theme-option active" data-theme="default">Default Purple</div>
+            <div class="theme-option" data-theme="ocean">Ocean Blue</div>
+            <div class="theme-option" data-theme="sunset">Sunset Orange</div>
+            <div class="theme-option" data-theme="forest">Forest Green</div>
+            <div class="theme-option" data-theme="dark">Dark Mode</div>
+        </div>
+    </div>
+
+    <script>
+        function exportResults() {
+            alert('Export functionality would be implemented here. Results would be downloaded as CSV or PDF.');
+        }
+
+        // Simple filtering functionality
+        document.getElementById('filter-period').addEventListener('change', filterResults);
+        document.getElementById('filter-test').addEventListener('change', filterResults);
+
+        function filterResults() {
+            const period = document.getElementById('filter-period').value;
+            const testType = document.getElementById('filter-test').value;
+            
+            const rows = document.querySelectorAll('.results-table tbody tr');
+            
+            rows.forEach(row => {
+                let showRow = true;
+                
+                // Filter by test type
+                if (testType !== 'all') {
+                    const testTypeCell = row.cells[1].textContent;
+                    if (!testTypeCell.toLowerCase().includes(testType.replace('min', ' minute'))) {
+                        showRow = false;
+                    }
+                }
+                
+                // Filter by period (simplified - in real app would parse dates)
+                if (period !== 'all') {
+                    const dateCell = row.cells[0].textContent;
+                    const testDate = new Date(dateCell);
+                    const now = new Date();
+                    const daysDiff = (now - testDate) / (1000 * 60 * 60 * 24);
+                    
+                    if (period === 'week' && daysDiff > 7) showRow = false;
+                    if (period === 'month' && daysDiff > 30) showRow = false;
+                    if (period === 'year' && daysDiff > 365) showRow = false;
+                }
+                
+                row.style.display = showRow ? '' : 'none';
+            });
+        }        // Close dropdown if clicked outside
+        window.addEventListener('click', (e) => {
+            if (!e.target.closest('.theme-selector-container')) {
+                const themeDropdown = document.getElementById('themeDropdown');
+                if (themeDropdown) {
+                    themeDropdown.classList.remove('show');
+                }
+            }
+        });
+    </script>
+</body>
+</html>

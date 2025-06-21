@@ -1,0 +1,69 @@
+/* MOBILE MENU BUTTON FIX - ABOUT PAGE */
+.mobile-menu-btn {
+  display: none !important;
+  background: rgba(255, 255, 255, 0.15) !important;
+  border: 2px solid rgba(255, 255, 255, 0.3) !important;
+  color: white !important;
+  font-size: 1.2rem !important;
+  font-weight: 600 !important;
+  cursor: pointer !important;
+  padding: 10px !important;
+  border-radius: 8px !important;
+  transition: all 0.3s ease !important;
+  position: relative !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+  width: 45px !important;
+  height: 45px !important;
+}
+
+.mobile-menu-btn::after {
+  display: none !important;
+  content: none !important;
+}
+
+.menu-icon {
+  font-size: 1.2rem !important;
+  line-height: 1 !important;
+  transition: transform 0.3s ease !important;
+  display: block !important;
+}
+
+.mobile-menu-btn:hover {
+  background: rgba(255, 255, 255, 0.25) !important;
+  border-color: rgba(255, 255, 255, 0.5) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+.mobile-menu-btn.active {
+  background: rgba(255, 255, 255, 0.2) !important;
+}
+
+.mobile-menu-btn.active .menu-icon {
+  transform: rotate(90deg) !important;
+}
+
+/* Mobile visibility */
+@media (max-width: 768px) {
+  .mobile-menu-btn {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+}
+
+@media (max-width: 430px) {
+  .mobile-menu-btn {
+    width: 40px !important;
+    height: 40px !important;
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  .menu-icon {
+    font-size: 1.1rem !important;
+  }
+}

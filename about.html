@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us - TypingMaster</title>
+    <link rel="stylesheet" href="about.css" />
+    <link rel="stylesheet" href="mobile-menu-fix.css" />
+    <script src="theme-manager.js"></script>
+    <script src="menu.js"></script>
+    <script src="auth.js"></script>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <div class="nav-brand">
+          <h1>TypingMaster</h1>
+        </div>
+        <!-- Mobile Menu Button -->
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+          <span class="menu-icon">☰</span>
+        </button>
+        <ul class="nav-links" id="navLinks">
+          <!-- Navigation will be dynamically populated by auth.js -->
+        </ul>
+      </nav>
+    </header>
+    <!-- Floating Theme Selector -->
+    <div class="theme-selector-container">
+      <button class="theme-toggle-btn" id="themeToggleBtn">
+        <div class="theme-color-dots">
+          <div class="color-dot default-dot"></div>
+          <div class="color-dot ocean-dot"></div>
+          <div class="color-dot sunset-dot"></div>
+          <div class="color-dot forest-dot"></div>
+          <div class="color-dot dark-dot"></div>
+        </div>
+      </button>
+      <div class="theme-dropdown" id="themeDropdown">
+        <div class="theme-option active" data-theme="default">
+          Default Purple
+        </div>
+        <div class="theme-option" data-theme="ocean">Ocean Blue</div>
+        <div class="theme-option" data-theme="sunset">Sunset Orange</div>
+        <div class="theme-option" data-theme="forest">Forest Green</div>
+        <div class="theme-option" data-theme="dark">Dark Mode</div>
+      </div>
+    </div>
+
+    <main>
+      <section class="about-hero">
+        <div class="container">
+          <h1>About TypingMaster</h1>
+          <p>Empowering people to type faster and more accurately since 2020</p>
+        </div>
+      </section>
+
+      <section class="about-content">
+        <div class="container">
+          <div class="about-section">
+            <h2>Our Mission</h2>
+            <p>
+              At TypingMaster, we believe that efficient typing is a fundamental
+              skill in today's digital world. Our mission is to provide an
+              accessible, engaging, and effective platform that helps people of
+              all ages and skill levels improve their typing speed and accuracy.
+            </p>
+            <p>
+              We understand that whether you're a student working on
+              assignments, a professional writing reports, or someone learning
+              to code, fast and accurate typing can significantly boost your
+              productivity and confidence.
+            </p>
+          </div>
+
+          <div class="about-section">
+            <h2>What We Offer</h2>
+            <div class="features-grid">
+              <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3>Personalized Tests</h3>
+                <p>
+                  Customizable typing tests that adapt to your skill level and
+                  help you focus on areas that need improvement.
+                </p>
+              </div>
+              <div class="feature-card">
+                <div class="feature-icon">📈</div>
+                <h3>Progress Tracking</h3>
+                <p>
+                  Detailed analytics and progress reports to help you monitor
+                  your improvement over time.
+                </p>
+              </div>
+              <div class="feature-card">
+                <div class="feature-icon">🏆</div>
+                <h3>Achievement System</h3>
+                <p>
+                  Motivational achievements and milestones to keep you engaged
+                  in your typing journey.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-section">
+            <h2>Our Story</h2>
+            <p>
+              TypingMaster was founded in 2020 by a team of educators and
+              developers who recognized the growing importance of digital
+              literacy. We noticed that many people, despite spending hours
+              daily on computers, never learned to type efficiently.
+            </p>
+            <p>
+              Starting as a simple typing test website, we've evolved into a
+              comprehensive platform that serves thousands of users worldwide.
+              Our commitment to continuous improvement drives us to regularly
+              update our features based on user feedback and the latest research
+              in learning methodologies.
+            </p>
+          </div>
+          <div class="about-section">
+            <h2>Why Choose TypingMaster?</h2>
+            <div class="why-choose-grid">
+              <div>
+                <h3>🚀 Fast & Responsive</h3>
+                <p>
+                  Our platform is optimized for speed and works seamlessly
+                  across all devices and browsers.
+                </p>
+              </div>
+              <div>
+                <h3>🔒 Privacy Focused</h3>
+                <p>
+                  We respect your privacy and never share your personal
+                  information or typing data with third parties.
+                </p>
+              </div>
+              <div>
+                <h3>💡 Always Improving</h3>
+                <p>
+                  We continuously add new features and improvements based on
+                  user feedback and industry best practices.
+                </p>
+              </div>
+              <div>
+                <h3>🌍 Global Community</h3>
+                <p>
+                  Join thousands of users worldwide who are improving their
+                  typing skills with TypingMaster.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="about-section">
+            <h2>Meet Our Team</h2>
+            <div class="team-grid">
+              <div class="team-member">
+                <div class="team-avatar">
+                  <div class="avatar-icon ceo-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path
+                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"
+                      />
+                    </svg>
+                  </div>
+                </div>
+                <h3>Alex Johnson</h3>
+                <p class="team-role">Founder & CEO</p>
+                <p class="team-description">
+                  Passionate about education technology and helping people
+                  unlock their potential through better typing skills.
+                </p>
+              </div>
+              <div class="team-member">
+                <div class="team-avatar">
+                  <div class="avatar-icon designer-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path
+                        d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+                      />
+                    </svg>
+                  </div>
+                </div>
+                <h3>Sarah Chen</h3>
+                <p class="team-role">Head of Design</p>
+                <p class="team-description">
+                  Creates intuitive and beautiful user experiences that make
+                  learning to type enjoyable and engaging.
+                </p>
+              </div>
+              <div class="team-member">
+                <div class="team-avatar">
+                  <div class="avatar-icon specialist-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path
+                        d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"
+                      />
+                    </svg>
+                  </div>
+                </div>
+                <h3>Dr. Michael Brown</h3>
+                <p class="team-role">Learning Specialist</p>
+                <p class="team-description">
+                  Educational psychologist who ensures our methods are based on
+                  proven learning science principles.
+                </p>
+              </div>
+              <div class="team-member">
+                <div class="team-avatar">
+                  <div class="avatar-icon developer-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path
+                        d="M9.4 16.6L4.8 12l4.6-4.6L8 6l-6 6 6 6 1.4-1.4zm5.2 0L19.2 12l-4.6-4.6L16 6l6 6-6 6-1.4-1.4z"
+                      />
+                    </svg>
+                  </div>
+                </div>
+                <h3>Emily Rodriguez</h3>
+                <p class="team-role">Lead Developer</p>
+                <p class="team-description">
+                  Full-stack developer who builds the robust and scalable
+                  technology that powers TypingMaster.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-section">
+            <h2>Our Impact</h2>
+            <div class="stats-grid">
+              <div class="stat-item">
+                <div class="stat-number">50,000+</div>
+                <div class="stat-label">Users Worldwide</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">2M+</div>
+                <div class="stat-label">Tests Completed</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">40%</div>
+                <div class="stat-label">Average Speed Improvement</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-number">95%</div>
+                <div class="stat-label">User Satisfaction Rate</div>
+              </div>
+            </div>
+          </div>
+          <div class="about-section">
+            <h2>Get in Touch</h2>
+            <p>
+              We love hearing from our users! Whether you have questions,
+              suggestions, or just want to share your typing progress, we're
+              here to help.
+            </p>
+            <div class="contact-grid">
+              <div class="contact-card">
+                <h3>📧 Email Us</h3>
+                <p>support@typingmaster.com</p>
+              </div>
+              <div class="contact-card">
+                <h3>💬 Live Chat</h3>
+                <p>Available 24/7 for instant support</p>
+              </div>
+              <div class="contact-card">
+                <h3>🌐 Social Media</h3>
+                <p>Follow us for tips and updates</p>
+              </div>
+            </div>
+          </div>
+          <div class="cta-section">
+            <h2>Ready to Start Your Typing Journey?</h2>
+            <p>
+              Join thousands of users who have already improved their typing
+              skills with TypingMaster.
+            </p>
+            <a href="typing-test.html" class="btn">Get Started Today</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>&copy; 2025 TypingMaster. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      // Initialize authentication
+      const auth = new Auth();
+    </script>
+  </body>
+</html>

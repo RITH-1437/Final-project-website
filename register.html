@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register - TypingMaster</title>
+    <link rel="stylesheet" href="register.css" />
+    <script src="auth.js"></script>
+    <script src="theme-manager.js"></script>
+    <script src="menu.js"></script>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <div class="nav-brand">
+          <h1>TypingMaster</h1>
+        </div>
+        <!-- Mobile Menu Button -->
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+          <span class="menu-icon">☰</span>
+        </button>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="typing-test.html">Typing Test</a></li>
+          <li><a href="login.html">Login</a></li>
+          <li><a href="register.html" class="active">Register</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <div class="form-container">
+        <h2>Create Your Account</h2>
+        <form onsubmit="auth.handleRegister(event)">
+          <div class="form-group">
+            <label for="fullname">Full Name</label>
+            <input
+              type="text"
+              id="fullname"
+              name="fullname"
+              placeholder="Enter your full name"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Enter your email"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input
+              type="text"
+              id="username"
+              name="username"
+              placeholder="Choose a username"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Create a password"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="confirm-password">Confirm Password</label>
+            <input
+              type="password"
+              id="confirm-password"
+              name="confirm-password"
+              placeholder="Confirm your password"
+              required
+            />
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%">
+            Create Account
+          </button>
+        </form>
+        <div class="form-links">
+          <p>Already have an account? <a href="login.html">Login here</a></p>
+        </div>
+      </div>
+    </main>
+
+    <!-- Floating Theme Selector -->
+    <div class="theme-selector-container">
+      <button class="theme-toggle-btn" id="themeToggleBtn">
+        <div class="theme-color-dots">
+          <div class="color-dot default-dot"></div>
+          <div class="color-dot ocean-dot"></div>
+          <div class="color-dot sunset-dot"></div>
+          <div class="color-dot forest-dot"></div>
+          <div class="color-dot dark-dot"></div>
+        </div>
+      </button>
+      <div class="theme-dropdown" id="themeDropdown">
+        <div class="theme-option active" data-theme="default">
+          Default Purple
+        </div>
+        <div class="theme-option" data-theme="ocean">Ocean Blue</div>
+        <div class="theme-option" data-theme="sunset">Sunset Orange</div>
+        <div class="theme-option" data-theme="forest">Forest Green</div>
+        <div class="theme-option" data-theme="dark">Dark Mode</div>
+      </div>
+    </div>
+    <footer>
+      <div class="container">
+        <p>&copy; 2025 TypingMaster. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      // Initialize authentication system
+      document.addEventListener("DOMContentLoaded", function () {
+        window.auth = new Auth();
+      });
+    </script>
+  </body>
+</html>

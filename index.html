@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TypingMaster - Improve Your Typing Skills</title>
+    <link rel="stylesheet" href="index.css" />
+    <script src="auth.js"></script>
+    <script src="theme-manager.js"></script>
+    <script src="menu.js"></script>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar">
+        <div class="nav-brand">
+          <h1>TypingMaster</h1>
+        </div>
+        <!-- Mobile Menu Button -->
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+          <span class="menu-icon">☰</span>
+        </button>
+        <ul class="nav-links" id="navLinks">
+          <!-- Navigation will be populated by auth.js -->
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-content">
+          <h1>Master Your Typing Skills</h1>
+          <p>
+            Practice typing with our interactive tests and track your progress
+          </p>
+          <div class="hero-buttons" id="heroButtons">
+            <!-- Buttons will be populated by auth.js based on login status -->
+          </div>
+        </div>
+      </section>
+
+      <section class="features">
+        <div class="container">
+          <h2>Why Choose TypingMaster?</h2>
+          <div class="features-grid">
+            <div class="feature-card">
+              <div class="feature-icon">⚡</div>
+              <h3>Track Progress</h3>
+              <p>
+                Monitor your WPM and accuracy over time with detailed analytics
+              </p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">📊</div>
+              <h3>Multiple Tests</h3>
+              <p>
+                Various typing tests to improve different skills and challenge
+                yourself
+              </p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">🎯</div>
+              <h3>Detailed Results</h3>
+              <p>
+                Get comprehensive analysis of your performance and areas to
+                improve
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="stats">
+        <div class="container">
+          <h2>Join Thousands of Users</h2>
+          <div class="stats-grid">
+            <div class="stat-item">
+              <div class="stat-number">10,000+</div>
+              <div class="stat-label">Active Users</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">500,000+</div>
+              <div class="stat-label">Tests Completed</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">95%</div>
+              <div class="stat-label">Improvement Rate</div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="container">
+        <p>&copy; 2025 TypingMaster. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- Floating Theme Selector -->
+    <div class="theme-selector-container">
+      <button class="theme-toggle-btn" id="themeToggleBtn">
+        <div class="theme-color-dots">
+          <div class="color-dot default-dot"></div>
+          <div class="color-dot ocean-dot"></div>
+          <div class="color-dot sunset-dot"></div>
+          <div class="color-dot forest-dot"></div>
+          <div class="color-dot dark-dot"></div>
+        </div>
+      </button>
+      <div class="theme-dropdown" id="themeDropdown">
+        <div class="theme-option active" data-theme="default">
+          Default Purple
+        </div>
+        <div class="theme-option" data-theme="ocean">Ocean Blue</div>
+        <div class="theme-option" data-theme="sunset">Sunset Orange</div>
+        <div class="theme-option" data-theme="forest">Forest Green</div>
+        <div class="theme-option" data-theme="dark">Dark Mode</div>
+      </div>
+    </div>
+
+    <script>
+      // Initialize authentication system
+      document.addEventListener("DOMContentLoaded", function () {
+        window.auth = new Auth();
+      });
+    </script>
+  </body>
+</html>
